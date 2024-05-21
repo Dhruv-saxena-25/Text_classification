@@ -22,7 +22,9 @@ conda activate hates/
 ```
 pip install -r requirements.txt
 ```
+## Gcloud cli
 - setupup your GCP Account
+- https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe
 ```
 gcloud init
 ```
