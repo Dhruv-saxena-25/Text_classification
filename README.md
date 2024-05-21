@@ -3,11 +3,11 @@
 ## How to run?
 
 ```cmd
-conda create -p hate python=3.10 -y
+conda create -p hates python=3.10 -y
 
 ```
 ```cmd
-conda activate hate/
+conda activate hates/
 ```
 
 ```
