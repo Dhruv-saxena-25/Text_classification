@@ -1,0 +1,25 @@
+columns:
+  - id: int
+  - label: int
+  - tweet: category
+  - count: int
+  - hate_speech: int
+  -	offensive_language: int
+  -	neither: int
+  -	class: category
+
+numerical_columns:
+  - id
+  - label
+  - tweet
+  - count
+  - hate_speech
+  -	offensive_language
+  -	neither
+
+
+categorical_columns:
+  - tweet
+  - class
+
+  
