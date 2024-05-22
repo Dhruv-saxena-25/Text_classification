@@ -18,8 +18,6 @@ class DataIngestion:
         try:
             logging.info("Entered the get_data_from_gcloud method of Data ingestion class")
             os.makedirs(self.data_ingestion_config.DATA_INGESTION_ARTIFACTS_DIR, exist_ok=True)
-            print(self.data_ingestion_config.DATA_INGESTION_ARTIFACTS_DIR)
-
             self.gcloud.sync_folder_from_gcloud(
                 self.data_ingestion_config.BUCKET_NAME,
                 self.data_ingestion_config.ZIP_FILE_NAME,
