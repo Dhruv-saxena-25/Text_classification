@@ -64,8 +64,9 @@ class DataValidation:
 
             if len(missing_columns1)>0:
                 logging.info(f"Missing column in raw dataset: {missing_columns1}")
+            
 
-
+            
             return False if len(missing_columns1)>0  else True
         except Exception as e:
             raise CustomException(e, sys) from e
@@ -81,12 +82,13 @@ class DataValidation:
     
     def initiate_data_validation(self) -> DataValidationArtifacts:
        
+        # os.makedirs(self.data_validation_config.data_validation_dir, exist_ok=True)
 
         try:
             validation_error_msg = ""
             logging.info("Starting data validation")
-            imb_df, raw_df = (DataValidation.read_data(file_path=self.data_ingestion_artifacts.imbalance_data_file_path),
-                              DataValidation.read_data(file_path=self.data_ingestion_artifacts.raw_data_file_path))
+            imb_df = DataValidation.read_data(file_path=self.data_ingestion_artifacts.imbalance_data_file_path)
+            raw_df =  DataValidation.read_data(file_path=self.data_ingestion_artifacts.raw_data_file_path)
 
             status = self.validate_number_of_columns_imb(dataframe=imb_df)
             logging.info(f"All required columns present in IMBALANCE dataframe: {status}")
@@ -111,13 +113,15 @@ class DataValidation:
             validation_status = len(validation_error_msg) == 0
 
 
-            data_validation_artifact = DataValidationArtifacts(
+            data_validation_artifacts = DataValidationArtifacts(
                 validation_status=validation_status,
                 message=validation_error_msg,
                 report_file_path=self.data_validation_config.report_file_path
             )
+            print(data_validation_artifacts)
 
-            logging.info(f"Data validation artifact: {data_validation_artifact}")
-            return data_validation_artifact
+            logging.info(f"Data validation artifact: {data_validation_artifacts}")
+            return data_validation_artifacts
         except Exception as e:
             raise CustomException(e, sys) from e
+        

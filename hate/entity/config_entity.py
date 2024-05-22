@@ -17,6 +17,6 @@ class DataIngestionConfig:
 
 @dataclass
 class DataValidationConfig:
-    data_validation_dir: str = os.path.join(ARTIFACTS_DIR, DATA_VALIDATION_DIR_NAME)
-    report_file_path: str = os.path.join(data_validation_dir, DATA_VALIDATION_REPORT_FILE_NAME)
+        data_validation_dir: str = os.path.join(ARTIFACTS_DIR, DATA_VALIDATION_DIR_NAME)
+        report_file_path: str = os.path.join(data_validation_dir, DATA_VALIDATION_REPORT_FILE_NAME)
 
