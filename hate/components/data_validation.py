@@ -119,6 +119,10 @@ class DataValidation:
                 report_file_path=self.data_validation_config.report_file_path
             )
             print(data_validation_artifacts)
+            content = f"Validation Status: {bool(validation_status)}" 
+            
+            write_yaml_file(file_path= self.data_validation_config.report_file_path, 
+                            content = content)
 
             logging.info(f"Data validation artifact: {data_validation_artifacts}")
             return data_validation_artifacts

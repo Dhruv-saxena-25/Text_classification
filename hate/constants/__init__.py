@@ -25,3 +25,13 @@ DATA_INGESTION_RAW_DATA_DIR = "raw_data.csv"
 # Data Validation Constant
 DATA_VALIDATION_DIR_NAME: str = "DataValidationArtifacts"
 DATA_VALIDATION_REPORT_FILE_NAME: str = "report.yaml"
+
+# Data Transformation Constant
+DATA_TRANSFORMATION_ARTIFACTS_DIR = 'DataTransformationArtifacts'
+TRANSFORMED_FILE_NAME = "final.csv"
+DATA_DIR = "data"
+ID = 'id'
+AXIS = 1
+INPLACE = True
+DROP_COLUMNS = ['count','hate_speech','offensive_language','neither']
+CLASS = 'class'
