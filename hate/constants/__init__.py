@@ -39,7 +39,7 @@ CLASS = 'class'
 
 # Model Training Constants
 
-DATA_TRANSFORMATION_ARTIFACTS_DIR = "ModelTrainerArtifacts"
+MODEL_TRAINER_ARTIFACTS_DIR = "ModelTrainerArtifacts"
 TRAINED_MODEL_DIR = 'trained_model'
 TRANINED_MODEL_NAME = 'model.h5'
 X_TEST_FILE_NAME = 'x_test.csv'
@@ -61,3 +61,15 @@ MAX_LEN = 300
 LOSS = 'binary_crossentropy' 
 METRICS = ['accuracy'] 
 ACTIVATION = 'sigmoid'
+
+# Model  Evaluation Constants
+
+MODEL_EVALUATION_ARTIFACTS_DIR = "ModelEvaluationArtifacts"
+BEST_MODEL_DIR = 'Best_Model'
+MODEL_EVALUATION_FILE_NAME = 'loss.csv'
+MODEL_NAME = 'model.h5'
+
+# Flask Constants 
+APP_HOST = "0.0.0.0"
+APP_PORT = 8080
+

@@ -43,9 +43,9 @@ class DataTransformationConfig:
 @dataclass
 class ModelTrainerConfig:
      def __init__(self):
-        self.TRAINED_MODEL_DIR = os.path.join(ARTIFACTS_DIR, DATA_TRANSFORMATION_ARTIFACTS_DIR)
+        self.TRAINED_MODEL_DIR = os.path.join(ARTIFACTS_DIR, MODEL_TRAINER_ARTIFACTS_DIR)
         self.TRAINED_MODEL_PATH = os.path.join(self.TRAINED_MODEL_DIR, TRANINED_MODEL_NAME)
-        self.X_TEST_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, X_TRAIN_FILE_NAME)
+        self.X_TEST_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, X_TEST_FILE_NAME)
         self.Y_TEST_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, Y_TEST_FILE_NAME)
         self.X_TRAIN_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, X_TRAIN_FILE_NAME)
         self.MAX_WORDS = MAX_WORDS
@@ -62,4 +62,21 @@ class ModelTrainerConfig:
         self.TEST_SIZE = TEST_SIZE
         
         
+# Model Evaluation Configuration
 
+@dataclass
+
+class ModelEvaluationConfig:
+     def __init__(self):
+          self.MODEL_EVALUATION_MODEL_DIR: str = os.path.join(ARTIFACTS_DIR, MODEL_EVALUATION_ARTIFACTS_DIR)
+          self.BEST_MODEL_DIR_PATH: str = os.path.join(self.MODEL_EVALUATION_MODEL_DIR, BEST_MODEL_DIR)
+          self.BUCKET_NAME = BUCKET_NAME
+          self.MODEL_NAME = MODEL_NAME
+
+@dataclass
+class ModelPusherConfig:
+
+    def __init__(self):
+        self.TRAINED_MODEL_PATH = os.path.join(ARTIFACTS_DIR, MODEL_TRAINER_ARTIFACTS_DIR)
+        self.BUCKET_NAME = BUCKET_NAME
+        self.MODEL_NAME = MODEL_NAME

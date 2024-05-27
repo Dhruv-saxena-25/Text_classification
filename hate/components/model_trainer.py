@@ -107,7 +107,6 @@ class ModelTrainer:
             model.save(self.model_trainer_config.TRAINED_MODEL_PATH)
             X_test.to_csv(self.model_trainer_config.X_TEST_DATA_PATH)
             y_test.to_csv(self.model_trainer_config.Y_TEST_DATA_PATH)
-
             X_train.to_csv(self.model_trainer_config.X_TRAIN_DATA_PATH)
 
             model_trainer_artifacts = ModelTrainerArtifacts(
