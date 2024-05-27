@@ -3,7 +3,6 @@ import nltk
 import pandas as pd
 from nltk.corpus import stopwords
 nltk.download('stopwords')
-from sklearn.model_selection import train_test_split
 from hate.logger import logging
 from hate.exception import CustomException
 from hate.entity.config_entity import DataTransformationConfig

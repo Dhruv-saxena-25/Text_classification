@@ -19,7 +19,7 @@ class DataIngestionConfig:
 # Data Validation COnfiguration
 @dataclass
 class DataValidationConfig:
-        data_validation_dir: str = os.path.join(ARTIFACTS_DIR, DATA_VALIDATION_DIR_NAME)
+        data_validation_dir: str = os.path.join(ARTIFACTS_DIR, DATA_VALIDATION_ARTIFACTS_DIR)
         report_file_path: str = os.path.join(data_validation_dir, DATA_VALIDATION_REPORT_FILE_NAME)
 
 
@@ -37,4 +37,29 @@ class DataTransformationConfig:
          self.LABEL = LABEL
          self.TWEET = TWEET
 
+
+# Model Trainer Configuration
+
+@dataclass
+class ModelTrainerConfig:
+     def __init__(self):
+        self.TRAINED_MODEL_DIR = os.path.join(ARTIFACTS_DIR, DATA_TRANSFORMATION_ARTIFACTS_DIR)
+        self.TRAINED_MODEL_PATH = os.path.join(self.TRAINED_MODEL_DIR, TRANINED_MODEL_NAME)
+        self.X_TEST_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, X_TRAIN_FILE_NAME)
+        self.Y_TEST_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, Y_TEST_FILE_NAME)
+        self.X_TRAIN_DATA_PATH = os.path.join(self.TRAINED_MODEL_DIR, X_TRAIN_FILE_NAME)
+        self.MAX_WORDS = MAX_WORDS
+        self.MAX_LEN = MAX_LEN
+        self.LOSS = LOSS
+        self.METRICS = METRICS
+        self.ACTIVATION = ACTIVATION
+        self.LABEL = LABEL
+        self.TWEET = TWEET
+        self.RANDOM_STATE = RANDOM_STATE
+        self.EPOCH = EPOCH
+        self.BATCH_SIZE = BATCH_SIZE
+        self.VALIDATION_SPLIT = VALIDATION_SPLIT
+        self.TEST_SIZE = TEST_SIZE
+        
+        
 

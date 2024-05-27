@@ -4,14 +4,18 @@ from hate.exception import CustomException
 from hate.components.data_ingestion import DataIngestion
 from hate.components.data_validation import DataValidation
 from hate.components.data_transforamation import DataTransformation
+from hate.components.model_trainer import  ModelTrainer
+
 
 from hate.entity.config_entity import (DataIngestionConfig, 
                                        DataValidationConfig,
-                                       DataTransformationConfig,)
+                                       DataTransformationConfig,
+                                       ModelTrainerConfig)
 
 from hate.entity.artifact_entity import (DataIngestionArtifacts,
                                          DataValidationArtifacts,
-                                         DataTransformationArtifacts,)
+                                         DataTransformationArtifacts,
+                                         ModelTrainerArtifacts)
 
 class TrainPipeline:
 
@@ -20,6 +24,7 @@ class TrainPipeline:
             self.data_ingestion_config = DataIngestionConfig()
             self.data_validation_config = DataValidationConfig()
             self.data_transformation_config = DataTransformationConfig()
+            self.model_trainer_config = ModelTrainerConfig()
         except Exception as e:
             raise CustomException(e, sys) from e
     
@@ -59,19 +64,33 @@ class TrainPipeline:
         try:
             logging.info("Entered the start_data_trnaformation method of TrainPipeline class")
 
-            data_taransforamtion = DataTransformation(data_ingestion_artifacts= data_ingestion_artifacts,
+            data_transforamtion = DataTransformation(data_ingestion_artifacts= data_ingestion_artifacts,
                                                       data_transformation_config= self.data_transformation_config)
-            data_taransforamtion_artifacts = data_taransforamtion.initiate_data_transformation()
+            data_transformation_artifacts = data_transforamtion.initiate_data_transformation()
 
 
             logging.info("Performed the data transformation operation")
             logging.info("Exited the start_data_trnaformation method of TrainPipeline class")
 
-            return data_taransforamtion_artifacts
+            return data_transformation_artifacts
         
         except Exception as e:
             raise CustomException(e, sys) from e
 
+    def start_model_trainer(self, data_transformation_artifacts: DataTransformationArtifacts) -> ModelTrainerArtifacts:
+        logging.info(
+            "Entered the start_model_trainer method of TrainPipeline class"
+        )
+        try:
+            model_trainer = ModelTrainer(data_transformation_artifacts=data_transformation_artifacts,
+                                        model_trainer_config=self.model_trainer_config
+                                        )
+            model_trainer_artifacts = model_trainer.initiate_model_trainer()
+            logging.info("Exited the start_model_trainer method of TrainPipeline class")
+            return model_trainer_artifacts
+
+        except Exception as e:
+            raise CustomException(e, sys) 
         
 
     def run_pipeline(self):
@@ -79,6 +98,10 @@ class TrainPipeline:
         try:
             data_ingestion_artifacts = self.start_data_ingestion()
             data_validation_artifact = self.start_data_validation(data_ingestion_artifacts=data_ingestion_artifacts)
-            data_taransforamtion_artifacts = self.start_data_transformation(data_ingestion_artifacts=data_ingestion_artifacts)
+            data_transformation_artifacts = self.start_data_transformation(data_ingestion_artifacts=data_ingestion_artifacts)
+            model_trainer_artifacts = self.start_model_trainer(
+                data_transformation_artifacts=data_transformation_artifacts
+            )
+
         except Exception as e:
             raise CustomException(e, sys) from e  
