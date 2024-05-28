@@ -88,7 +88,7 @@ class ModelTrainer:
 
             logging.info("Entered into model training")
             es_callback = EarlyStopping(monitor='val_loss', mode='auto',
-                            patience=2)
+                            patience=3)
             model.fit(sequences_matrix, y_train, 
                         batch_size=self.model_trainer_config.BATCH_SIZE, 
                         epochs = self.model_trainer_config.EPOCH, 

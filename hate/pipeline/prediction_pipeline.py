@@ -89,10 +89,11 @@ class PredictionPipeline:
     def run_pipeline(self,text):
         logging.info("Entered the run_pipeline method of PredictionPipeline class")
         try:
-
+            best_model_path = os.path.join(self.model_path, self.model_name) 
             # best_model_path: str = self.get_model_from_gcloud() 
-            best_model_path = os.path.join(self.model_path, self.model_name)
             predicted_text = self.predict(best_model_path,text)
+                
+        
             logging.info("Exited the run_pipeline method of PredictionPipeline class")
             return predicted_text
         except Exception as e:
