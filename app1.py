@@ -18,7 +18,9 @@ app=application
 
 @app.route("/", methods=['GET'])
 @cross_origin()
+
 def home():
+    
     return render_template('home.html')
 
 
