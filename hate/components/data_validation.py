@@ -78,6 +78,8 @@ class DataValidation:
             return pd.read_csv(file_path)
         except Exception as e:
             raise CustomException(e, sys)
+    
+   
         
     
     def initiate_data_validation(self) -> DataValidationArtifacts:
